@@ -1,20 +1,45 @@
 import { Link } from "react-router-dom";
 import Navbar from "../Shared/Navbar/Navbar";
 
-const Login = () => {
-  const handleLogin = (e) => {
+const Register = () => {
+  const handleRegister = (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     console.log(form.get("password"));
   };
+
   return (
     <div>
       <Navbar></Navbar>
       <form
-        onSubmit={handleLogin}
+        onSubmit={handleRegister}
         className="card-body mx-auto md:w-3/4 lg:w-1/2"
       >
-        <h2 className="text-center text-3xl">Please Login</h2>
+        <h2 className="text-center text-3xl">Please Register</h2>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Name</span>
+          </label>
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            className="input input-bordered"
+            required
+          />
+        </div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Photo URL</span>
+          </label>
+          <input
+            type="text"
+            name="photoUrl"
+            placeholder="Photo URL"
+            className="input input-bordered"
+            required
+          />
+        </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
@@ -45,14 +70,17 @@ const Login = () => {
           </label>
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Login</button>
+          <button className="btn btn-primary">Register</button>
         </div>
       </form>
       <p className="text-center">
-        Do not have an account? Please <Link to="/register" className="btn-link">register</Link>
+        Already have an account? Please
+        <Link to="/login" className="btn-link">
+          Login
+        </Link>
       </p>
     </div>
   );
 };
 
-export default Login;
+export default Register;
